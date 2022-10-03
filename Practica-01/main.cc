@@ -1,3 +1,19 @@
+////////////////////////////////////////////////////////////////////////////////
+// Universidad de La Laguna
+// Asignatura: Computabilidad y Algoritmia (CyA)
+// Práctica 1 - Símbolos, alfabetos y cadenas
+////////////////////////////////////////////////////////////////////////////////
+// Autor: Alejandro Pérez Álvarez
+// Correo: alu0101215310@ull.edu.es
+// Fecha: 03/10/2022
+////////////////////////////////////////////////////////////////////////////////
+// Archivo main.cc: 
+//    Fichero que contiene la función main del programa, esta se encargará de 
+//    hacer la primera llamada a funciones, además de procesar la línea de
+//    comando. También incluye una función help() que servirá de guía de 
+//    utilización del programa
+////////////////////////////////////////////////////////////////////////////////
+
 #include "operation.h"
 
 void help();
