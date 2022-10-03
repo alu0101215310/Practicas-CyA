@@ -11,25 +11,42 @@ operation::~operation() {}
 void operation::init () {
   std::string line;
   std::string symbol;
+  bool checkChain = true;
+  bool checkAlphabet = true;
   while (getline(input, line)) {
     std::stringstream auxLine(line);
     std::set<char> auxSet;
-    bool check = true;
     while (getline(auxLine, symbol, ' ')) {
       auxSet.insert(*symbol.c_str());
+      if (*symbol.c_str() == '&') checkAlphabet = false;
     }
+    if (*symbol.c_str() == '&') checkAlphabet = true;
     if (auxSet.size() == 1) {
-      auxSet.erase(*symbol.c_str());
       for (auto it : symbol) {
         auxSet.insert(it);
       }
     }
-    for (auto it : symbol) {
-      auto pos = auxSet.find(it);
-      if (pos == auxSet.end()) check = false;
+    alphabet newAlphabet = alphabet(auxSet);
+    chain newChain = chain(symbol);
+    if (newChain.getChain()[0] != '&') {
+      for (auto it : newChain.getChain()) {
+        auto pos = newAlphabet.getSymbols().find(it);
+        if (pos == newAlphabet.getSymbols().end() && it != '&') checkChain = false;
+      }
     }
-    if (check) language.push_back(chain(symbol));
-    else std::cout << "Error en la cadena: " << symbol << std::endl;
+    if (checkChain && checkAlphabet) {
+      language.push_back(newChain);
+      checkChain = true;
+      checkAlphabet = true;
+    }
+    if (!checkAlphabet) {
+      std::cout << "Error en el alfabeto asociado a la cadena: " << symbol << std::endl;
+      checkAlphabet = true;
+    }
+    if (!checkChain) {
+      std::cout << "Error en la cadena: " << symbol << std::endl;
+      checkChain = true;
+    }
   }
   switch (code) {
     case 1:

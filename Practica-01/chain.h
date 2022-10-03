@@ -2,6 +2,8 @@
 #include <vector>
 #include <string>
 #include <set>
+#include <fstream>
+#include <sstream>
 
 class chain {
   private:
@@ -12,13 +14,4 @@ class chain {
     ~chain();
 
     std::vector<char> getChain();
-    //std::string getInfo();
-    //std::set<char> getSymbols();
-
-    //void setSymbols(std::set<char>);
-    //void setInfo(std::string);
 };
-
-
-std::ostream& operator<<(std::ostream&, const chain&);
-

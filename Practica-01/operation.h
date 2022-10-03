@@ -1,8 +1,3 @@
-#include <iostream>
-#include <fstream>
-#include <vector>
-#include <sstream>
-
 #include "alphabet.h"
 
 class operation{
