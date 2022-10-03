@@ -13,6 +13,8 @@ SRC=main.cpp operation.cpp chain.cpp alphabet.cpp
 #Directorio de los ejecutables
 BIN=bin
 
+EXT=./
+
 #Objetos
 OBJS=$(SRC:.cpp=.o)
 
