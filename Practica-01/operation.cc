@@ -14,6 +14,7 @@ void operation::init () {
   while (getline(input, line)) {
     std::stringstream auxLine(line);
     std::set<char> auxSet;
+    bool check = true;
     while (getline(auxLine, symbol, ' ')) {
       auxSet.insert(*symbol.c_str());
     }
@@ -23,7 +24,12 @@ void operation::init () {
         auxSet.insert(it);
       }
     }
-    language.push_back(chain(symbol));
+    for (auto it : symbol) {
+      auto pos = auxSet.find(it);
+      if (pos == auxSet.end()) check = false;
+    }
+    if (check) language.push_back(chain(symbol));
+    else std::cout << "Error en la cadena: " << symbol << std::endl;
   }
   switch (code) {
     case 1:
@@ -108,4 +114,3 @@ void operation::subchain() {
     output << std::endl; 
   }  
 }
-
