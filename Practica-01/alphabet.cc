@@ -13,12 +13,15 @@
 
 #include "alphabet.h"
 
+// Constructor que inicializa los s´imbolos de un alfabeto
 alphabet::alphabet(std::set<char> newSymbols) {
   symbols = newSymbols;
 }
 
+// Destructor
 alphabet::~alphabet() {}
 
+// Devuelve los símbolos de un alfabeto
 std::set<char> alphabet::getSymbols() {
   return symbols;
 }

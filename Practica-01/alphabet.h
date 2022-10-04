@@ -15,7 +15,7 @@
 
 class alphabet {
   private:
-    std::set<char> symbols;
+    std::set<char> symbols; // Conjuntos de símbolos de un alfabeto
 
   public:
     alphabet(std::set<char>);

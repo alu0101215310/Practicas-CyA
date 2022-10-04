@@ -13,12 +13,14 @@
 
 #include "alphabet.h"
 
+// Representa una calculadora que se hará cargo del análisis
+// y representación de los datos pasados al programa
 class operation{
   private:
-    int code;
-    std::ifstream input;
-    std::ofstream output;
-    std::vector<chain> language;
+    int code; // Código de operación
+    std::ifstream input; // Fichero de entrada
+    std::ofstream output; // Fichero de salida
+    std::vector<chain> language; // Conjunto de cadenas
 
   public:
     operation(char*[]);

@@ -21,7 +21,7 @@
 
 class chain {
   private:
-    std::vector<char> info;
+    std::vector<char> info; // Elementos de la cadena en formato char
 
   public:
     chain(std::string newInfo);

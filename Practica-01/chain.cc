@@ -13,14 +13,17 @@
 
 #include "chain.h"
 
+// Constructor que transforma un string en vector de caracteres
 chain::chain(std::string newInfo) {
   for (auto it : newInfo) {
     info.push_back(it);
   }
 }
 
+// Destructor
 chain::~chain() {}
 
+// Devuelve el vector de la cadena
 std::vector<char> chain::getChain() {
   return info;
 }

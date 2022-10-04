@@ -14,19 +14,23 @@
 
 #include "operation.h"
 
+// Constructor que abre los ficheros y guarda el código de operación
 operation::operation(char* argv[]) {
   input.open(argv[1]);
   output.open(argv[2]);
   code = atoi(argv[3]);
 }
-
+// Destructor
 operation::~operation() {}
 
+// Función coordinadora del programa
 void operation::init () {
   std::string line;
   std::string symbol;
   bool checkChain = true;
   bool checkAlphabet = true;
+  // Análisis edl ficher de entrada y creación de las diferentes estructuras
+  // de datos a partir del mismo, sean estas caddenas y alfabetos válidos
   while (getline(input, line)) {
     std::stringstream auxLine(line);
     std::set<char> auxSet;
@@ -48,6 +52,7 @@ void operation::init () {
         if (pos == newAlphabet.getSymbols().end() && it != '&') checkChain = false;
       }
     }
+    // Comprobación de a validez de las cadenas y los alfabetos
     if (checkChain && checkAlphabet) {
       language.push_back(newChain);
       checkChain = true;
@@ -62,6 +67,7 @@ void operation::init () {
       checkChain = true;
     }
   }
+  // Ejecución de la función adecuada según el código
   switch (code) {
     case 1:
       lenght();
@@ -83,12 +89,16 @@ void operation::init () {
   }
 }
 
+// Genera la longitud de cada cadena válida leídas del
+// fichero de entrada
 void operation::lenght() {
   for (auto it : language) {
     output << it.getChain().size() << std::endl;
   }
 }
 
+// Genera la cadena inversa de cada cadena válida leídas del
+// fichero de entrada
 void operation::reverse() {
   for (auto it : language) {
     for (int i = it.getChain().size() - 1; i >= 0; i--) {
@@ -98,6 +108,8 @@ void operation::reverse() {
   }
 }
 
+// Genera los prefijos de cada cadena válida leídas del
+// fichero de entrada
 void operation::preffix() {
   int counter = 0;
   for (auto it : language) {
@@ -114,6 +126,8 @@ void operation::preffix() {
   }
 }
 
+// Genera los sufijos de cada cadena válida leídas del
+// fichero de entrada
 void operation::suffix() {
   int counter;
   for (auto it : language) {
@@ -130,6 +144,8 @@ void operation::suffix() {
   }
 }
 
+// Genera las subcadenas de cada cadena válida leídas del
+// fichero de entrada
 void operation::subchain() {
   for (auto it : language) {
     for (int i = 0; i < it.getChain().size(); i++) {
