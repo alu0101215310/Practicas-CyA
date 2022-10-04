@@ -8,7 +8,7 @@ CXXFLAGS=-g
 RM=rm -rf
 
 #Archivos cpp
-SRC=main.cpp operation.cpp chain.cpp alphabet.cpp
+SRC=main.cc operation.cc chain.cc alphabet.cc
 
 #Directorio de los ejecutables
 BIN=bin
@@ -16,7 +16,7 @@ BIN=bin
 EXT=./
 
 #Objetos
-OBJS=$(SRC:.cpp=.o)
+OBJS=$(SRC:.cc=.o)
 
 all: program
 
