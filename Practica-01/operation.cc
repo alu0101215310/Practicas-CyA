@@ -93,7 +93,8 @@ void operation::init () {
 // fichero de entrada
 void operation::lenght() {
   for (auto it : language) {
-    output << it.getChain().size() << std::endl;
+    if (it.getChain()[0] == '&') output << '0' << std::endl;
+    else output << it.getChain().size() << std::endl;
   }
 }
 
