@@ -27,10 +27,10 @@ program: $(OBJS)
 #Crea el objeto main.o
 main.o: main.cc operation.o
 
-#Crea el objeto calculadora.o
+#Crea el objeto operation.o
 operation.o: operation.cc operation.h alphabet.o
 
-#Crea el objeto lenguaje.o
+#Crea el objeto alphabet.o
 alphabet.o: alphabet.cc alphabet.h chain.o
 
 #Crea el objeto cadena.o
