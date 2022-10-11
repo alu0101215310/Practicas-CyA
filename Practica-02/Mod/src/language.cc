@@ -89,6 +89,13 @@ language language::potency(language optLanguage, int exp) {
   return result;
 }
 
+bool language::equal(language firstLanguage, language secondLanguage) {
+  if (firstLanguage >= secondLanguage) 
+    return true;
+  else
+    return false;
+}
+
 language language::operator*(const language& opt) const {
   language result;  
   for (auto it1 : getLanguage()) {
@@ -148,6 +155,21 @@ language language::operator-(const language& opt) const {
   }
   
   return result;
+}
+
+bool language::operator>=(const language& opt) const {
+  bool equal;
+  for (auto it1 : opt.getLanguage()) {
+    equal = false;
+    for (auto it2 : getLanguage()) {
+      if (it1 == it2)
+        equal = true;
+    }
+    if (!equal) 
+      return false;
+  }
+  
+  return true;
 }
 
 language operator^(const language& optLanguage, const int& exp) {
