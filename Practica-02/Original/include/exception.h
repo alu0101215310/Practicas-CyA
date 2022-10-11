@@ -1,15 +1,14 @@
 ////////////////////////////////////////////////////////////////////////////////
 // Universidad de La Laguna
 // Asignatura: Computabilidad y Algoritmia (CyA)
-// Práctica 1 - Símbolos, alfabetos y cadenas
+// Práctica 2 - Operaciones con lenguajes
 ////////////////////////////////////////////////////////////////////////////////
 // Autor: Alejandro Pérez Álvarez
 // Correo: alu0101215310@ull.edu.es
-// Fecha: 03/10/2022
+// Fecha: 10/10/2022
 ////////////////////////////////////////////////////////////////////////////////
-// Archivo chain.h: 
-//    Fichero que contiene la declaración de la clase cadena y sus métodos,
-//    además de las librerías del proyecto
+// Archivo exception.h: 
+//    Fichero que contiene las diferentes excepciones que puede da el programa
 ////////////////////////////////////////////////////////////////////////////////
 
 #include <iostream>
@@ -18,14 +17,18 @@
 #include <set>
 #include <fstream>
 #include <sstream>
+#include <exception>
 
-class chain {
-  private:
-    std::vector<char> info; // Elementos de la cadena en formato char
-
+class fileError : public std::exception {
   public:
-    chain(std::string newInfo);
-    ~chain();
+    virtual const char* what() const throw() {
+      return "ERROR! Han habido errores con un fichero!";
+    }
+};
 
-    std::vector<char> getChain();
+class sintaxError : public std::exception {
+  public:
+    virtual const char* what() const throw() {
+      return "ERROR! Han habido errores de sintaxis!";
+    }
 };
