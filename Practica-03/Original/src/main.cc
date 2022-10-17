@@ -16,12 +16,7 @@
 
 #include "../include/management.h"
 
-const unsigned int MIN = 1;
-const unsigned int MAX = 6;
-const unsigned int UNIT = 4;
 const unsigned int ARGUMENTS = 2;  
-const unsigned int POTENCY = 6;
-const unsigned int ZERO = 0;
 
 bool arguments(int argc, char* argv[]);
 
@@ -31,8 +26,6 @@ void help(void);
 
 int main(int argc, char* argv[]) {
   try {
-    int code;
-    int exp;
     if (arguments(argc, argv)) {
       run(argv);
     }
@@ -61,20 +54,9 @@ void run(char* argv[]) {
 
 void help (void) {
     std::cout << "---------------------------------------------------------" << std::endl;
-    std::cout << "Formato del Programa: ./Prog Entrada Salida Codigo Exp?"   << std::endl;
+    std::cout << "Formato del Programa: ./Prog Entrada                     " << std::endl;
     std::cout << "---------------------------------------------------------" << std::endl;
     std::cout << "Prog: Nombre del Programa"                                 << std::endl;
     std::cout << "Entrada: Fichero con el texto a analizar"                  << std::endl;
-    std::cout << "Salida: Fichero con el texto analizado"                    << std::endl;
-    std::cout << "Codigo: Clave de la operacion a realizar"                  << std::endl;
-    std::cout << "   1.  Concatenacion"                                      << std::endl;
-    std::cout << "   2.  Union"                                              << std::endl;
-    std::cout << "   3.  Interseccion"                                       << std::endl;
-    std::cout << "   4.  Diferencia"                                         << std::endl;
-    std::cout << "   5.  Inversa"                                            << std::endl;
-    std::cout << "   6.  Potencia"                                           << std::endl;
-    std::cout << "---------------------------------------------------------" << std::endl;
-    std::cout << "El fichero de salida sera creado en el caso"               << std::endl; 
-    std::cout << "de que no exista"                                          << std::endl;
     std::cout << "---------------------------------------------------------" << std::endl;
 }
