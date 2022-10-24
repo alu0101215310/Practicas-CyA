@@ -10,7 +10,7 @@ SRC     := src
 BUILD	:= build
 INCLUDE := include
 LIB     := lib
-LIBRARIES   := inputFile.txt
+LIBRARIES   := inputFile.cc lib/outputFile.txt
 EXECUTABLE  := Program
 
 SOURCES := $(wildcard $(SRC)/*.cc)

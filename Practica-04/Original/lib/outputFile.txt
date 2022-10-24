@@ -1,0 +1,10 @@
+VARIABLES:
+[ Line 25 ] int: factorial = 1
+[ Line 36 ] int: limit = 1
+
+STATEMENTS:
+[ Line 26 ] LOOP: for
+[ Line 38 ] LOOP: for
+
+MAIN:
+true
