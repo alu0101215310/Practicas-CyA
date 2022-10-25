@@ -1,8 +1,20 @@
+////////////////////////////////////////////////////////////////////////////////
+// Universidad de La Laguna
+// Asignatura: Computabilidad y Algoritmia (CyA)
+// Práctica 4 - Expresiones regulares
+////////////////////////////////////////////////////////////////////////////////
+// Autor: Alejandro Pérez Álvarez
+// Correo: alu0101215310@ull.edu.es
+// Fecha: 25/10/2022
+////////////////////////////////////////////////////////////////////////////////
+// Archivo comment.h: 
+//    Fichero que contiene la declaración de la clase comment y sus métodos
+////////////////////////////////////////////////////////////////////////////////
+
 #include "exception.h"
 
 class comment {
   private:
-    std::string type;
     int firstPos;
     int lastPos;
     std::vector<std::string> var;
@@ -15,7 +27,6 @@ class comment {
     void addLine(std::string);
     void addLastPos(int);
 
-    std::string getType(void) const;
     int getFirstPos(void) const;
     int getLastPos(void) const;
     std::vector<std::string> getVar(void) const;

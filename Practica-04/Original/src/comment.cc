@@ -1,3 +1,16 @@
+////////////////////////////////////////////////////////////////////////////////
+// Universidad de La Laguna
+// Asignatura: Computabilidad y Algoritmia (CyA)
+// Práctica 4 - Expresiones regulares
+////////////////////////////////////////////////////////////////////////////////
+// Autor: Alejandro Pérez Álvarez
+// Correo: alu0101215310@ull.edu.es
+// Fecha: 25/10/2022
+////////////////////////////////////////////////////////////////////////////////
+// Archivo comment.cc: 
+//    Fichero que contiene las definición de la clase comment y sus métodos
+////////////////////////////////////////////////////////////////////////////////
+
 #include "../include/comment.h"
 
 comment::comment (void) {};
@@ -16,8 +29,6 @@ void comment::addLine (std::string newComment) {
 void comment::addLastPos (int end) {
   lastPos = end;
 }
-
-std::string comment::getType (void) const { return type; }
 
 int comment::getFirstPos(void) const { return firstPos; }
 

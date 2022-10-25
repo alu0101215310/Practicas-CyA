@@ -9,7 +9,7 @@ DESCRIPTION:
 * @date 23. nov .2020
 * @brief Ejercicios Informatica Basica
 *
-Version 1: Funcion factorial
+* Version 1: Funcion factorial
 *
 * @see https :// github . com / IB -2022 -2023/ IB - class - code - examples /
 */

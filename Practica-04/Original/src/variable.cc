@@ -1,3 +1,16 @@
+////////////////////////////////////////////////////////////////////////////////
+// Universidad de La Laguna
+// Asignatura: Computabilidad y Algoritmia (CyA)
+// Práctica 4 - Expresiones regulares
+////////////////////////////////////////////////////////////////////////////////
+// Autor: Alejandro Pérez Álvarez
+// Correo: alu0101215310@ull.edu.es
+// Fecha: 25/10/2022
+////////////////////////////////////////////////////////////////////////////////
+// Archivo variable.cc: 
+//    Fichero que contiene las definición de la clase variable y sus métodos
+////////////////////////////////////////////////////////////////////////////////
+
 #include "../include/variable.h"
 
 variable::variable (void) {};
@@ -10,7 +23,7 @@ variable::variable (std::string rawVariable, int line) {
   std::stringstream auxLine(rawVariable);
 
   getline(auxLine, word, SPACE);
-    while (word != "int" && word != "double")
+    while (word != INT && word != DOUBLE)
       getline(auxLine, word, SPACE);
     type = word;
  
@@ -22,9 +35,9 @@ variable::variable (std::string rawVariable, int line) {
     }
   if (rawVariable.find(EQUAL) != std::string::npos) {
     getline(auxLine, word, DOTCHCOME);
-      if (type == "int")
+      if (type == INT)
         var = atoi(word.c_str());
-      if (type == "double")
+      if (type == DOUBLE)
         var = atol(word.c_str());
   }
  };
