@@ -14,6 +14,7 @@
 #include "variable.h"
 #include "comment.h"
 #include "loop.h"
+#include "return.h"
 
 const std::string VAREX = "[[:s:]]*(int|double)[[:s:]]+[[:w:]]+([[:s:]]*=[[:s:]]*[[:d:]]+)*[[:s:]]*;";
 const std::string LOOPEX = "[[:s:]]*(for|while)[[:s:]]*[(].*[)][[:s:]]*[{]";
@@ -22,11 +23,14 @@ const std::string COMMEX = "[[:print:]]*//[[:print:]]*";
 const std::string COMMEXOP = "[[:print:]]*/[*][[:print:]]*";
 const std::string COMMEXCL = "[[:print:]]*[*]/";
 
+const std::string RETEX = "[[:s:]]*return[[:s:]]+[[:w:]]+*[[:s:]]*;";
+
 class regex {
   private:
     std::vector<variable> variables;
     std::vector<loop> loops;
     std::vector<comment> comments;
+    std::vector<returnEx> returns;
     bool mainEx;
     comment desc;
 

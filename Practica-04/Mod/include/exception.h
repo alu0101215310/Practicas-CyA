@@ -29,6 +29,7 @@ const char SLASH = '/';
 
 const std::string INT = "int";
 const std::string DOUBLE = "double";
+const std::string RETURN = "return";
 
 #pragma once
 
