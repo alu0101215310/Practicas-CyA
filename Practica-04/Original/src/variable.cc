@@ -4,6 +4,7 @@ variable::variable (void) {};
 
 variable::variable (std::string rawVariable, int line) {
   pos = line;
+  var = 0;
 
   std::string word;
   std::stringstream auxLine(rawVariable);
@@ -12,15 +13,21 @@ variable::variable (std::string rawVariable, int line) {
     while (word != "int" && word != "double")
       getline(auxLine, word, SPACE);
     type = word;
+ 
   getline(auxLine, word, EQUAL);
     name = word;
     for ( auto it : name) {
       if (name.find(SPACE) != std::string::npos)
-        name.erase(name.find(SPACE), 1);
+      name.erase(name.find(SPACE), 1);
     }
-  getline(auxLine, word, DOTCHCOME);
-    var = atoi(word.c_str());
-};
+  if (rawVariable.find(EQUAL) != std::string::npos) {
+    getline(auxLine, word, DOTCHCOME);
+      if (type == "int")
+        var = atoi(word.c_str());
+      if (type == "double")
+        var = atol(word.c_str());
+  }
+ };
 
 variable::~variable (void) {};
 
@@ -33,7 +40,10 @@ int variable::getPos (void) const { return pos; }
 double variable::getVar (void) const { return var; }
 
 std::ostream& operator<<(std::ostream& os, const variable& printVariable) {
-  os << "[ Line " << printVariable.getPos() << " ] " << printVariable.getType() << ": " << 
-    printVariable.getName() << " = " << printVariable.getVar();
+  if (printVariable.getVar() == 0) 
+    os << "[ Line " << printVariable.getPos() << " ] " << printVariable.getType() << ": " << printVariable.getName();
+  else
+    os << "[ Line " << printVariable.getPos() << " ] " << printVariable.getType() << ": " << 
+      printVariable.getName() << " = " << printVariable.getVar();
   return os;
 }

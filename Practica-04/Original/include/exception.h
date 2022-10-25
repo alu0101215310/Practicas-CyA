@@ -5,6 +5,7 @@
 #include <vector>
 #include <fstream>
 #include <sstream>
+#include <stdlib.h>
 
 const char SPACE = ' ';
 const char EQUAL = '=';

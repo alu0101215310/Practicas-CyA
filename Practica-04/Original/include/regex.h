@@ -2,7 +2,7 @@
 #include "comment.h"
 #include "loop.h"
 
-const std::string VAREX = "[[:s:]]*(int|double)[[:s:]]+[[:w:]]+([[:s:]]*=[[:s:]]*[[:d:]]+)[[:s:]]*;";
+const std::string VAREX = "[[:s:]]*(int|double)[[:s:]]+[[:w:]]+([[:s:]]*=[[:s:]]*[[:d:]]+)*[[:s:]]*;";
 const std::string LOOPEX = "[[:s:]]*(for|while)[[:s:]]*[(].*[)][[:s:]]*[{]";
 const std::string MAINEX = "int[[:s:]]main[[:s:]]*[(][[:print:]]*[)][[:s:]]*[{]"; 
 const std::string COMMEX = "//[[:print:]]*";
@@ -15,6 +15,7 @@ class regex {
     std::vector<loop> loops;
     std::vector<comment> comments;
     bool mainEx;
+    comment desc;
 
     std::ifstream inputFile;
     std::ofstream outputFile;
@@ -25,5 +26,5 @@ class regex {
     ~regex(void);
   
     void build(void);
-    void write(void);
+    void write(std::string);
 };

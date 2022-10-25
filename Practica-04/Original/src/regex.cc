@@ -14,7 +14,7 @@ regex::regex(char* inputFileName, char* outputFileName) {
   }
 
   build();
-  write();
+  write(outputFileName);
 } 
 
 regex::~regex (void) {};
@@ -23,19 +23,26 @@ void regex::build (void) {
   std::string line;
   int counter = 1;
   mainEx = false;
+  bool checkDesc = false;
   
   while (getline(inputFile, line)) {
     if (std::regex_match(line, std::regex(COMMEXOP))) {
-      comment comm(line, counter, true);
+      comment comm(line, counter);
+      if (counter == 1) checkDesc = true;
       while (!std::regex_match(line, std::regex(COMMEXCL))) {
-        counter++;
         getline(inputFile,line);
-        comm.addLine(line,counter);
+        comm.addLine(line);
+        counter++;
       } 
+      if (checkDesc) {
+        desc = comm;
+        checkDesc = false;
+      }
+      comm.addLastPos(counter);
       comments.push_back(comm);
     }
     else if (std::regex_match(line, std::regex(COMMEX))) {
-      comment comm(line, counter, false);
+      comment comm(line, counter);
       comments.push_back(comm);
     }
     else if (std::regex_match(line, std::regex(LOOPEX))) {
@@ -53,8 +60,12 @@ void regex::build (void) {
   }
 }
 
-void regex::write (void) {
-  outputFile << "VARIABLES:" << std::endl;
+void regex::write (std::string program) {
+  outputFile << "PROGRAM: " << program << std::endl;
+  outputFile << "DESCRIPTION:" << std::endl;
+  for (auto it : desc.getVar()) 
+    outputFile << it << std::endl;
+  outputFile << std::endl << "VARIABLES:" << std::endl;
   for (auto it : variables) 
     outputFile << it << std::endl;
   outputFile << std::endl << "STATEMENTS:" << std::endl;
@@ -65,4 +76,7 @@ void regex::write (void) {
     outputFile << "true" << std::endl;
   else 
     outputFile << "false" << std::endl;
+  outputFile << std::endl << "COMMENTS:" << std::endl;
+  for (auto it : comments)
+    outputFile << it << std::endl;
 }

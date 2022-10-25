@@ -33,7 +33,7 @@ int Factorial ( int number ) {
 
 int main () {
   std :: cout << " Introduzca el numero de factoriales a calcular : " ;
-  int limit=1;
+  int limit ;
   std :: cin >> limit ;
   for ( int i = 1; i <= limit ; ++ i ) {
     std :: cout << i << " ! = " << ( double ) Factorial ( i ) << std :: endl ;
