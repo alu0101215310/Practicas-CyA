@@ -10,7 +10,7 @@ SRC     := src
 BUILD	:= build
 INCLUDE := include
 LIB     := lib
-LIBRARIES   := 
+LIBRARIES   := inputFile.txt
 EXECUTABLE  := Program
 
 SOURCES := $(wildcard $(SRC)/*.cc)
@@ -31,12 +31,12 @@ $(BUILD)/%.o: $(SRC)/%.cc
 project:
 	clear
 	@echo "📁 Creating Project Structure..."
-	mkdir -p bin build include src
+	mkdir -p bin build include src lib
 
 run:
 	clear
 	@echo "🚀 Executing..."
-	./$(BIN)/$(EXECUTABLE)
+	./$(BIN)/$(EXECUTABLE) $(LIB)/$(LIBRARIES)
 
 clean:
 	@echo "🧹 Clearing..."
