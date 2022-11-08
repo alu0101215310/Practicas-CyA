@@ -10,7 +10,7 @@ SRC     := src
 BUILD	:= build
 INCLUDE := include
 LIB     := lib
-LIBRARIES   := nfa.fa lib/input.txt
+LIBRARIES   := dfa.fa lib/input.txt
 EXECUTABLE  := Program
 
 SOURCES := $(wildcard $(SRC)/*.cc)
